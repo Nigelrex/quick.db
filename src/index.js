@@ -207,6 +207,10 @@ module.exports = function (file) {
             db.backup(`${dbname}.sqlite`)
         },
 
+        close: function () {
+            db.close()
+        },
+
         /**
          * Using 'new' on this function creates a new instance of a table.
          * @param {name} input any string as the name of the table.
@@ -364,6 +368,9 @@ module.exports = function (file) {
             this.backup = function (name) {
                 const dbname = name ? `${name}` : `backup-${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear}`;
                 db.backup(`${dbname}.sqlite`)
+            };
+            this.close = function () {
+                db.close()
             };
         },
     };
